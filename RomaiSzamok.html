@@ -12,6 +12,7 @@
   function romai(n) {
   
 	 const romaiszamok = [
+	{ ertek: 4, romaiszam: 'IV' },
     { ertek: 1, romaiszam: 'I' }
   ];
 
@@ -40,6 +41,10 @@
 	
 	QUnit.test('harom', function(assert) {
       assert.equal(romai(3),'III');
+    });
+	
+	QUnit.test('negy', function(assert) {
+      assert.equal(romai(4),'IV');
     });
 	
 	
