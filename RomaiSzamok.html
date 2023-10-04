@@ -10,19 +10,39 @@
 
 <script>
   function romai(n) {
+  
+	 const romaiszamok = [
+    { ertek: 1, romaiszam: 'I' }
+  ];
 
-	if(n == 1){
-		return 'I';
-	}
+  let eredmeny = '';
+
+  for (const pair of romaiszamok) {
+    while (n >= pair.ertek) {
+      eredmeny += pair.romaiszam;
+      n -= pair.ertek;
+    }
+  }
+
+  return eredmeny;
 
 }
 
   QUnit.module('romai', function() {
-
+  
     QUnit.test('egy', function(assert) {
       assert.equal(romai(1),'I');
     });
-
+	
+	QUnit.test('ketto', function(assert) {
+      assert.equal(romai(2),'II');
+    });
+	
+	QUnit.test('harom', function(assert) {
+      assert.equal(romai(3),'III');
+    });
+	
+	
   });
-
+  
 </script>
