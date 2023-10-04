@@ -12,6 +12,9 @@
   function romai(n) {
   
 	 const romaiszamok = [
+	{ ertek: 900, romaiszam: 'DC' },
+	{ ertek: 500, romaiszam: 'D' },
+	{ ertek: 400, romaiszam: 'CD' },
 	{ ertek: 100, romaiszam: 'C' },
 	{ ertek: 90, romaiszam: 'LX' },
 	{ ertek: 50, romaiszam: 'L' },
@@ -96,6 +99,18 @@
 	
 	QUnit.test('szaz', function(assert) {
       assert.equal(romai(100),'C');
+    });
+	
+	QUnit.test('negyszaz', function(assert) {
+      assert.equal(romai(400),'CD');
+    });
+	
+	QUnit.test('otszaz', function(assert) {
+      assert.equal(romai(500),'D');
+    });
+	
+	QUnit.test('kilencszaz', function(assert) {
+      assert.equal(romai(900),'DC');
     });
 	
   });
