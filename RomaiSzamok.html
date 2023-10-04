@@ -12,6 +12,7 @@
   function romai(n) {
   
 	 const romaiszamok = [
+	{ ertek: 9, romaiszam: 'IX' },
 	{ ertek: 5, romaiszam: 'V' },
 	{ ertek: 4, romaiszam: 'IV' },
     { ertek: 1, romaiszam: 'I' }
@@ -62,6 +63,10 @@
 	
 	QUnit.test('nyolc', function(assert) {
       assert.equal(romai(8),'VIII');
+    });
+	
+	QUnit.test('kilenc', function(assert) {
+      assert.equal(romai(9),'IX');
     });
 	
   });
