@@ -12,6 +12,7 @@
   function romai(n) {
   
 	 const romaiszamok = [
+	{ ertek: 1000, romaiszam: 'M' },
 	{ ertek: 900, romaiszam: 'DC' },
 	{ ertek: 500, romaiszam: 'D' },
 	{ ertek: 400, romaiszam: 'CD' },
@@ -111,6 +112,10 @@
 	
 	QUnit.test('kilencszaz', function(assert) {
       assert.equal(romai(900),'DC');
+    });
+	
+	QUnit.test('ezer', function(assert) {
+      assert.equal(romai(1000),'M');
     });
 	
   });
