@@ -12,6 +12,9 @@
   function romai(n) {
   
 	 const romaiszamok = [
+	{ ertek: 100, romaiszam: 'C' },
+	{ ertek: 90, romaiszam: 'LX' },
+	{ ertek: 50, romaiszam: 'L' },
 	{ ertek: 40, romaiszam: 'XL' },
 	{ ertek: 10, romaiszam: 'X' },
 	{ ertek: 9, romaiszam: 'IX' },
@@ -81,6 +84,18 @@
 	
 	QUnit.test('negyven', function(assert) {
       assert.equal(romai(40),'XL');
+    });
+	
+	QUnit.test('otven', function(assert) {
+      assert.equal(romai(50),'L');
+    });
+	
+	QUnit.test('kilencven', function(assert) {
+      assert.equal(romai(90),'LX');
+    });
+	
+	QUnit.test('szaz', function(assert) {
+      assert.equal(romai(100),'C');
     });
 	
   });
