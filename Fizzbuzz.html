@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.20.0.css">
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.20.0.js"></script>
+</body>
+
+<script>
+  function fizzbuzz(n) {
+  output = "";
+  if(osztTart(n,3)) {
+	output += "fizz" }
+  if(osztTart(n,5)) {
+	output += 'buzz' }
+  
+  if(output == "") {
+	output = n;
+  }
+  return output;
+ }
+ 
+ function intIncludes(n, str){
+	return n.toString().includes(str);
+ }
+ 
+ function osztX(n,x){
+	return n % x == 0;
+ }
+ 
+ function osztTart(n, x){
+	return osztX(n,x) || intIncludes(n,x.toString())
+ }
+
+  QUnit.module('fizzbuzz teszt', function() {
+    QUnit.test('egy', function(assert) {
+      assert.equal(fizzbuzz(1), '1');
+    });
+	
+	 QUnit.test('ketto', function(assert) {
+      assert.equal(fizzbuzz(2), '2');
+    });
+	
+	QUnit.test('harom', function(assert) {
+      assert.equal(fizzbuzz(3), 'fizz');
+    });
+	
+	QUnit.test('negy', function(assert) {
+      assert.equal(fizzbuzz(4), '4');
+    });
+	
+	QUnit.test('ot', function(assert) {
+      assert.equal(fizzbuzz(5), 'buzz');
+    });
+	
+	QUnit.test('tizenot', function(assert) {
+      assert.equal(fizzbuzz(15), 'fizzbuzz');
+    });
+	
+	QUnit.test('hat', function(assert) {
+      assert.equal(fizzbuzz(6), 'fizz');
+    });
+	
+	QUnit.test('het', function(assert) {
+      assert.equal(fizzbuzz(7), '7');
+    });
+	
+	QUnit.test('kilenc', function(assert) {
+      assert.equal(fizzbuzz(9), 'fizz');
+    });
+	
+	QUnit.test('tiz', function(assert) {
+      assert.equal(fizzbuzz(10), 'buzz');
+    });
+	
+	QUnit.test('tizenharom', function(assert) {
+      assert.equal(fizzbuzz(13), 'fizz');
+    });
+	
+	QUnit.test('tizennegy', function(assert) {
+      assert.equal(fizzbuzz(14), '14');
+    });
+	
+	QUnit.test('otven', function(assert) {
+      assert.equal(fizzbuzz(50), 'buzz');
+    });
+	
+	QUnit.test('otvenketto', function(assert) {
+      assert.equal(fizzbuzz(52), 'buzz');
+    });
+	
+	QUnit.test('harminc', function(assert) {
+      assert.equal(fizzbuzz(30), 'fizzbuzz');
+    });
+	
+	QUnit.test('harmincot', function(assert) {
+      assert.equal(fizzbuzz(35), 'fizzbuzz');
+    });
+	
+  });
+</script>
