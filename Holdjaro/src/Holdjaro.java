@@ -11,7 +11,7 @@ public class Holdjaro {
             { 0, 1, 0, 0, 1, 0, 0, 0 }
     };
 
-	private static int currentPosition[] = { 4, 5 }; // aktuális pozíció
+    private static int currentPosition[] = { 4, 5 }; // aktuális pozíció
     private static char currentHeading = 'N'; // aktuális irány
     private static int previousPosition[] = { -1, -1 }; // pozíció visszaállítás
     private static char previousHeading; // irány visszaállítás
