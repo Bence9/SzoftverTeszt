@@ -13,4 +13,9 @@ public class HoldjaroTest {
         Assert.assertEquals('N', Holdjaro.Turn('l'));
     }
     
+    @Test
+    public void MoveTest(){
+        Assert.assertEquals("N35", Holdjaro.Move('f'));
+    }
+    
 }
