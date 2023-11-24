@@ -14,8 +14,13 @@ public class HoldjaroTest {
     }
     
     @Test
-    public void MoveTest(){
+    public void MoveForwardTest(){
         Assert.assertEquals("N35", Holdjaro.Move('f'));
+    }
+    
+    @Test
+    public void MoveBackwardTest(){
+        Assert.assertEquals("N45", Holdjaro.Move('b'));
     }
     
     @Test
