@@ -19,7 +19,7 @@ public class HoldjaroTest {
     }
     
     @Test
-    public void BumpTest(){
+    public void CollisionDetectionTest(){
         Assert.assertEquals("N45", Holdjaro.Move('b'));
     }
     

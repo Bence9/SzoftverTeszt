@@ -11,18 +11,18 @@ public class Holdjaro {
             { 0, 1, 0, 0, 1, 0, 0, 0 }
     };
 
-    private static int currentPosition[] = { 4, 5 }; // aktuális pozíció
-    private static char currentHeading = 'N'; // aktuális irány
-    private static int previousPosition[] = { -1, -1 }; // pozíció visszaállítás
-    private static char previousHeading; // irány visszaállítás
+    private static int position[] = { 4, 5 }; // aktuális pozíció
+    private static char Orientation = 'N'; // aktuális irány
+    private static int previousPosition[] = { -1, -1 }; // előző pozíció
+    private static char previousDirection; // előző irány
 
     public static void main(String args[]) {
 
         Turn('r');
-        System.out.println(" " + currentHeading + currentPosition[0] + currentPosition[1]);
+        System.out.println(" " + Orientation + position[0] + position[1]);
         
         Move('f');
-        System.out.println(" " + currentHeading + currentPosition[0] + currentPosition[1]);
+        System.out.println(" " + Orientation + position[0] + position[1]);
         
     }
 
@@ -30,46 +30,46 @@ public class Holdjaro {
 
         if (direction == 'r') {
 
-            switch (currentHeading) {
+            switch (Orientation) {
                 case 'N':
-                    currentHeading = 'E';
+                    Orientation = 'E';
                     break;
 
                 case 'E':
-                    currentHeading = 'S';
+                    Orientation = 'S';
                     break;
 
                 case 'S':
-                    currentHeading = 'W';
+                    Orientation = 'W';
                     break;
 
                 case 'W':
-                    currentHeading = 'N';
+                    Orientation = 'N';
                     break;
             }
         }
 
         if (direction == 'l') {
 
-            switch (currentHeading) {
+            switch (Orientation) {
                 case 'N':
-                    currentHeading = 'W';
+                    Orientation = 'W';
                     break;
 
                 case 'E':
-                    currentHeading = 'N';
+                    Orientation = 'N';
                     break;
 
                 case 'S':
-                    currentHeading = 'E';
+                    Orientation = 'E';
                     break;
 
                 case 'W':
-                    currentHeading = 'S';
+                    Orientation = 'S';
                     break;
             }
         }
-        return currentHeading;
+        return Orientation;
     }
 
 
@@ -78,88 +78,88 @@ public static String Move(char direction) {
     Task: switch (direction) {
 
         case 'f':
-            switch (currentHeading) {
+            switch (Orientation) {
                 case 'N':
-                    previousHeading = currentHeading;
-                    for (int i = 0; i < currentPosition.length; i++) {
-                        previousPosition[i] = currentPosition[i];
+                    previousDirection = Orientation;
+                    for (int i = 0; i < position.length; i++) {
+                        previousPosition[i] = position[i];
                     }
-                    if (currentPosition[0] == 0) {
-                        if (currentPosition[1] >= 0 && currentPosition[1] <= 3) {
-                            currentPosition[1] += 4;
-                        } else if (currentPosition[1] >= 4 && currentPosition[1] <= 7) {
-                            currentPosition[1] -= 4;
+                    if (position[0] == 0) {
+                        if (position[1] >= 0 && position[1] <= 3) {
+                            position[1] += 4;
+                        } else if (position[1] >= 4 && position[1] <= 7) {
+                            position[1] -= 4;
                         }
-                        currentHeading = 'S';
+                        Orientation = 'S';
                     } else {
-                        currentPosition[0] -= 1;
+                        position[0] -= 1;
                     }
-                    if (map[currentPosition[0]][currentPosition[1]] == 1) {
-                        currentHeading = previousHeading;
-                        for (int i = 0; i < currentPosition.length; i++) {
-                            currentPosition[i] = previousPosition[i];
+                    if (map[position[0]][position[1]] == 1) {
+                        Orientation = previousDirection;
+                        for (int i = 0; i < position.length; i++) {
+                            position[i] = previousPosition[i];
                         }
                     }
 
                     break Task;
 
                 case 'S':
-                    previousHeading = currentHeading;
-                    for (int i = 0; i < currentPosition.length; i++) {
-                        previousPosition[i] = currentPosition[i];
+                    previousDirection = Orientation;
+                    for (int i = 0; i < position.length; i++) {
+                        previousPosition[i] = position[i];
                     }
-                    if (currentPosition[0] == 7) {
-                        if (currentPosition[1] >= 0 && currentPosition[1] <= 3) {
-                            currentPosition[1] += 4;
-                        } else if (currentPosition[1] >= 4 && currentPosition[1] <= 7) {
-                            currentPosition[1] -= 4;
+                    if (position[0] == 7) {
+                        if (position[1] >= 0 && position[1] <= 3) {
+                            position[1] += 4;
+                        } else if (position[1] >= 4 && position[1] <= 7) {
+                            position[1] -= 4;
                         }
-                        currentHeading = 'N';
+                        Orientation = 'N';
                     } else {
-                        currentPosition[0] += 1;
+                        position[0] += 1;
                     }
-                    if (map[currentPosition[0]][currentPosition[1]] == 1) {
-                        currentHeading = previousHeading;
-                        for (int i = 0; i < currentPosition.length; i++) {
-                            currentPosition[i] = previousPosition[i];
+                    if (map[position[0]][position[1]] == 1) {
+                        Orientation = previousDirection;
+                        for (int i = 0; i < position.length; i++) {
+                            position[i] = previousPosition[i];
                         }
                     }
 
                     break Task;
 
                 case 'E':
-                    previousHeading = currentHeading;
-                    for (int i = 0; i < currentPosition.length; i++) {
-                        previousPosition[i] = currentPosition[i];
+                    previousDirection = Orientation;
+                    for (int i = 0; i < position.length; i++) {
+                        previousPosition[i] = position[i];
                     }
-                    if (currentPosition[1] == 7) {
-                        currentPosition[1] = 0;
+                    if (position[1] == 7) {
+                        position[1] = 0;
                     } else {
-                        currentPosition[1] += 1;
+                        position[1] += 1;
                     }
-                    if (map[currentPosition[0]][currentPosition[1]] == 1) {
-                        currentHeading = previousHeading;
-                        for (int i = 0; i < currentPosition.length; i++) {
-                            currentPosition[i] = previousPosition[i];
+                    if (map[position[0]][position[1]] == 1) {
+                        Orientation = previousDirection;
+                        for (int i = 0; i < position.length; i++) {
+                            position[i] = previousPosition[i];
                         }
                     }
 
                     break Task;
 
                 case 'W':
-                    previousHeading = currentHeading;
-                    for (int i = 0; i < currentPosition.length; i++) {
-                        previousPosition[i] = currentPosition[i];
+                    previousDirection = Orientation;
+                    for (int i = 0; i < position.length; i++) {
+                        previousPosition[i] = position[i];
                     }
-                    if (currentPosition[1] == 0) {
-                        currentPosition[1] = 7;
+                    if (position[1] == 0) {
+                        position[1] = 7;
                     } else {
-                        currentPosition[1] -= 1;
+                        position[1] -= 1;
                     }
-                    if (map[currentPosition[0]][currentPosition[1]] == 1) {
-                        currentHeading = previousHeading;
-                        for (int i = 0; i < currentPosition.length; i++) {
-                            currentPosition[i] = previousPosition[i];
+                    if (map[position[0]][position[1]] == 1) {
+                        Orientation = previousDirection;
+                        for (int i = 0; i < position.length; i++) {
+                            position[i] = previousPosition[i];
                         }
                     }
 
@@ -168,94 +168,94 @@ public static String Move(char direction) {
             }
             
         case 'b':
-            switch (currentHeading) {
+            switch (Orientation) {
                 case 'N':
-                    previousHeading = currentHeading;
-                    for (int i = 0; i < currentPosition.length; i++) {
-                        previousPosition[i] = currentPosition[i];
+                    previousDirection = Orientation;
+                    for (int i = 0; i < position.length; i++) {
+                        previousPosition[i] = position[i];
                     }
-                    if (currentPosition[0] == 7) {
-                        if (currentPosition[1] >= 0 && currentPosition[1] <= 3) {
-                            currentPosition[1] += 4;
-                        } else if (currentPosition[1] >= 4 && currentPosition[1] <= 7) {
-                            currentPosition[1] -= 4;
+                    if (position[0] == 7) {
+                        if (position[1] >= 0 && position[1] <= 3) {
+                            position[1] += 4;
+                        } else if (position[1] >= 4 && position[1] <= 7) {
+                            position[1] -= 4;
                         }
-                        currentHeading = 'S';
+                        Orientation = 'S';
                     } else {
-                        currentPosition[0] += 1;
+                        position[0] += 1;
                     }
-                    if (map[currentPosition[0]][currentPosition[1]] == 1) {
-                        currentHeading = previousHeading;
-                        for (int i = 0; i < currentPosition.length; i++) {
-                            currentPosition[i] = previousPosition[i];
+                    if (map[position[0]][position[1]] == 1) {
+                        Orientation = previousDirection;
+                        for (int i = 0; i < position.length; i++) {
+                            position[i] = previousPosition[i];
                         }
                     }
 
                     break Task;
 
                 case 'S':
-                    previousHeading = currentHeading;
-                    for (int i = 0; i < currentPosition.length; i++) {
-                        previousPosition[i] = currentPosition[i];
+                    previousDirection = Orientation;
+                    for (int i = 0; i < position.length; i++) {
+                        previousPosition[i] = position[i];
                     }
-                    if (currentPosition[0] == 0) {
-                        if (currentPosition[1] >= 0 && currentPosition[1] <= 3) {
-                            currentPosition[1] += 4;
-                        } else if (currentPosition[1] >= 4 && currentPosition[1] <= 7) {
-                            currentPosition[1] -= 4;
+                    if (position[0] == 0) {
+                        if (position[1] >= 0 && position[1] <= 3) {
+                            position[1] += 4;
+                        } else if (position[1] >= 4 && position[1] <= 7) {
+                            position[1] -= 4;
                         }
-                        currentHeading = 'N';
+                        Orientation = 'N';
                     } else {
-                        currentPosition[0] -= 1;
+                        position[0] -= 1;
                     }
-                    if (map[currentPosition[0]][currentPosition[1]] == 1) {
-                        currentHeading = previousHeading;
-                        for (int i = 0; i < currentPosition.length; i++) {
-                            currentPosition[i] = previousPosition[i];
+                    if (map[position[0]][position[1]] == 1) {
+                        Orientation = previousDirection;
+                        for (int i = 0; i < position.length; i++) {
+                            position[i] = previousPosition[i];
                         }
                     }
 
                     break Task;
 
                 case 'E':
-                    previousHeading = currentHeading;
-                    for (int i = 0; i < currentPosition.length; i++) {
-                        previousPosition[i] = currentPosition[i];
+                    previousDirection = Orientation;
+                    for (int i = 0; i < position.length; i++) {
+                        previousPosition[i] = position[i];
                     }
-                    if (currentPosition[1] == 0) {
-                        currentPosition[1] = 7;
+                    if (position[1] == 0) {
+                        position[1] = 7;
                     } else {
-                        currentPosition[1] -= 1;
+                        position[1] -= 1;
                     }
-                    if (map[currentPosition[0]][currentPosition[1]] == 1) {
-                        currentHeading = previousHeading;
-                        for (int i = 0; i < currentPosition.length; i++) {
-                            currentPosition[i] = previousPosition[i];
+                    if (map[position[0]][position[1]] == 1) {
+                        Orientation = previousDirection;
+                        for (int i = 0; i < position.length; i++) {
+                            position[i] = previousPosition[i];
                         }
                     }
 
                     break Task;
 
                 case 'W':
-                    previousHeading = currentHeading;
-                    for (int i = 0; i < currentPosition.length; i++) {
-                        previousPosition[i] = currentPosition[i];
+                    previousDirection = Orientation;
+                    for (int i = 0; i < position.length; i++) {
+                        previousPosition[i] = position[i];
                     }
-                    if (currentPosition[1] == 7) {
-                        currentPosition[1] = 0;
+                    if (position[1] == 7) {
+                        position[1] = 0;
                     } else {
-                        currentPosition[1] += 1;
+                        position[1] += 1;
                     }
-                    if (map[currentPosition[0]][currentPosition[1]] == 1) {
-                        currentHeading = previousHeading;
-                        for (int i = 0; i < currentPosition.length; i++) {
-                            currentPosition[i] = previousPosition[i];
+                    if (map[position[0]][position[1]] == 1) {
+                        Orientation = previousDirection;
+                        for (int i = 0; i < position.length; i++) {
+                            position[i] = previousPosition[i];
                         }
                     }
 
                     break Task;
             }
     }
-    return currentHeading + "" + currentPosition[0] + currentPosition[1];
+    return Orientation + "" + position[0] + position[1];
 	}
 }
