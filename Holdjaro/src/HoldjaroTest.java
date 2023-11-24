@@ -18,4 +18,9 @@ public class HoldjaroTest {
         Assert.assertEquals("N35", Holdjaro.Move('f'));
     }
     
+    @Test
+    public void BumpTest(){
+        Assert.assertEquals("N45", Holdjaro.Move('b'));
+    }
+    
 }

@@ -7,7 +7,7 @@ public class Holdjaro {
             { 0, 1, 0, 0, 0, 0, 1, 0 },
             { 0, 0, 0, 1, 0, 0, 0, 0 },
             { 0, 0, 0, 0, 0, 1, 0, 0 },
-            { 0, 1, 0, 1, 0, 0, 0, 0 },
+            { 0, 1, 0, 1, 1, 0, 0, 0 },
             { 0, 1, 0, 0, 1, 0, 0, 0 }
     };
 
@@ -166,7 +166,96 @@ public static String Move(char direction) {
                     break Task;
 
             }
-    	}
+            
+        case 'b':
+            switch (currentHeading) {
+                case 'N':
+                    previousHeading = currentHeading;
+                    for (int i = 0; i < currentPosition.length; i++) {
+                        previousPosition[i] = currentPosition[i];
+                    }
+                    if (currentPosition[0] == 7) {
+                        if (currentPosition[1] >= 0 && currentPosition[1] <= 3) {
+                            currentPosition[1] += 4;
+                        } else if (currentPosition[1] >= 4 && currentPosition[1] <= 7) {
+                            currentPosition[1] -= 4;
+                        }
+                        currentHeading = 'S';
+                    } else {
+                        currentPosition[0] += 1;
+                    }
+                    if (map[currentPosition[0]][currentPosition[1]] == 1) {
+                        currentHeading = previousHeading;
+                        for (int i = 0; i < currentPosition.length; i++) {
+                            currentPosition[i] = previousPosition[i];
+                        }
+                    }
+
+                    break Task;
+
+                case 'S':
+                    previousHeading = currentHeading;
+                    for (int i = 0; i < currentPosition.length; i++) {
+                        previousPosition[i] = currentPosition[i];
+                    }
+                    if (currentPosition[0] == 0) {
+                        if (currentPosition[1] >= 0 && currentPosition[1] <= 3) {
+                            currentPosition[1] += 4;
+                        } else if (currentPosition[1] >= 4 && currentPosition[1] <= 7) {
+                            currentPosition[1] -= 4;
+                        }
+                        currentHeading = 'N';
+                    } else {
+                        currentPosition[0] -= 1;
+                    }
+                    if (map[currentPosition[0]][currentPosition[1]] == 1) {
+                        currentHeading = previousHeading;
+                        for (int i = 0; i < currentPosition.length; i++) {
+                            currentPosition[i] = previousPosition[i];
+                        }
+                    }
+
+                    break Task;
+
+                case 'E':
+                    previousHeading = currentHeading;
+                    for (int i = 0; i < currentPosition.length; i++) {
+                        previousPosition[i] = currentPosition[i];
+                    }
+                    if (currentPosition[1] == 0) {
+                        currentPosition[1] = 7;
+                    } else {
+                        currentPosition[1] -= 1;
+                    }
+                    if (map[currentPosition[0]][currentPosition[1]] == 1) {
+                        currentHeading = previousHeading;
+                        for (int i = 0; i < currentPosition.length; i++) {
+                            currentPosition[i] = previousPosition[i];
+                        }
+                    }
+
+                    break Task;
+
+                case 'W':
+                    previousHeading = currentHeading;
+                    for (int i = 0; i < currentPosition.length; i++) {
+                        previousPosition[i] = currentPosition[i];
+                    }
+                    if (currentPosition[1] == 7) {
+                        currentPosition[1] = 0;
+                    } else {
+                        currentPosition[1] += 1;
+                    }
+                    if (map[currentPosition[0]][currentPosition[1]] == 1) {
+                        currentHeading = previousHeading;
+                        for (int i = 0; i < currentPosition.length; i++) {
+                            currentPosition[i] = previousPosition[i];
+                        }
+                    }
+
+                    break Task;
+            }
+    }
     return currentHeading + "" + currentPosition[0] + currentPosition[1];
 	}
 }
